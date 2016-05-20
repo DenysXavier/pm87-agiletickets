@@ -14,10 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.joda.time.Days;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
-import org.joda.time.Weeks;
 
 @Entity
 public class Espetaculo {
@@ -100,12 +98,8 @@ public class Espetaculo {
 	public List<Sessao> criaSessoes(LocalDate inicio, LocalDate fim,
 			LocalTime horario, Periodicidade periodicidade) {
 		List<Sessao> sessoes = new ArrayList<Sessao>();
-		int quantidadeSessoes=1;
-		if (periodicidade.equals(Periodicidade.DIARIA)) {
-			quantidadeSessoes = Days.daysBetween(inicio, fim).getDays() + 1;
-		} else if (periodicidade.equals(Periodicidade.SEMANAL)){
-			quantidadeSessoes = Weeks.weeksBetween(inicio, fim).getWeeks()+1;
-		}
+		int quantidadeSessoes=periodicidade.calculaQuantidadeSessoes(inicio, fim);
+		
 		for (int i = 0; i < quantidadeSessoes; i++) {
 
 			sessoes.add(new Sessao());
