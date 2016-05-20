@@ -6,6 +6,7 @@ import java.util.List;
 
 import junit.framework.Assert;
 
+import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import org.junit.Test;
@@ -31,6 +32,24 @@ public class EspetaculoTest {
 		Assert.assertEquals(5, sessoes.size());
 	}
 	
+	@Test
+	public void deveCriar3SessoesDiariasNasDatasCorretas() throws Exception {
+		Espetaculo espetaculo = new Espetaculo();
+		LocalDate inicio = new LocalDate(2016, 5, 19);
+		LocalDate fim = new LocalDate(2016, 5, 21);
+		LocalTime horario = new LocalTime(8,0);
+		List<Sessao> sessoes = espetaculo.criaSessoes(inicio, fim, horario, Periodicidade.DIARIA);
+		
+		DateTime primeiraSessao = new DateTime(2016,5,19,8,0);
+		Assert.assertEquals(primeiraSessao, sessoes.get(0).getInicio());
+		
+		DateTime segundaSessao = new DateTime(2016,5,20,8,0);
+		Assert.assertEquals(segundaSessao, sessoes.get(1).getInicio());
+		
+		DateTime terceiraSessao = new DateTime(2016,5,21,8,0);
+		Assert.assertEquals(terceiraSessao, sessoes.get(2).getInicio());
+		
+	}
 	@Test
 	public void deveCriar2SessoesSemanaisEmUmIntervaloDe9Dias() throws Exception {
 		Espetaculo espetaculo = new Espetaculo();
