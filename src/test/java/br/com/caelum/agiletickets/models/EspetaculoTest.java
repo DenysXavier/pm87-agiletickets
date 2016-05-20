@@ -17,7 +17,7 @@ public class EspetaculoTest {
 		Espetaculo espetaculo = new Espetaculo();
 		LocalDate data = new LocalDate();
 		LocalTime horario = new LocalTime();
-		List<Sessao> sessoes = espetaculo.criaSessoes(data, data, horario, null);
+		List<Sessao> sessoes = espetaculo.criaSessoes(data, data, horario, Periodicidade.DIARIA);
 		Assert.assertEquals(1, sessoes.size());
 	}
 
@@ -29,6 +29,16 @@ public class EspetaculoTest {
 		List<Sessao> sessoes = espetaculo.criaSessoes(inicio, fim, new LocalTime(8,0), Periodicidade.DIARIA);
 		
 		Assert.assertEquals(5, sessoes.size());
+	}
+	
+	@Test
+	public void deveCriar2SessoesSemanaisEmUmIntervaloDe9Dias() throws Exception {
+		Espetaculo espetaculo = new Espetaculo();
+		LocalDate inicio = new LocalDate(2016, 5, 19);
+		LocalDate fim = new LocalDate(2016, 5, 27);
+		List<Sessao> sessoes = espetaculo.criaSessoes(inicio, fim, new LocalTime(8,0), Periodicidade.SEMANAL);
+		
+		Assert.assertEquals(2, sessoes.size());
 	}
 	
 	@Test
