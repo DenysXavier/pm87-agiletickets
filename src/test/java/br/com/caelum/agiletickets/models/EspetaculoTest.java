@@ -50,6 +50,23 @@ public class EspetaculoTest {
 		Assert.assertEquals(terceiraSessao, sessoes.get(2).getInicio());
 		
 	}
+	
+	@Test
+	public void deveCriar2SessoesSemanaisNasDatasCorretas() throws Exception {
+		Espetaculo espetaculo = new Espetaculo();
+		LocalDate inicio = new LocalDate(2016, 5, 19);
+		LocalDate fim = new LocalDate(2016, 5, 27);
+		LocalTime horario = new LocalTime(8,0);
+		List<Sessao> sessoes = espetaculo.criaSessoes(inicio, fim, horario, Periodicidade.SEMANAL);
+		
+		DateTime primeiraSessao = new DateTime(2016,5,19,8,0);
+		Assert.assertEquals(primeiraSessao, sessoes.get(0).getInicio());
+		
+		DateTime segundaSessao = new DateTime(2016,5,26,8,0);
+		Assert.assertEquals(segundaSessao, sessoes.get(1).getInicio());
+		
+	}
+	
 	@Test
 	public void deveCriar2SessoesSemanaisEmUmIntervaloDe9Dias() throws Exception {
 		Espetaculo espetaculo = new Espetaculo();

@@ -107,7 +107,8 @@ public class Espetaculo {
 			Sessao sessao = new Sessao();
 			sessao.setInicio(horaSessao);
 			sessoes.add(sessao);
-			inicio = inicio.plusDays(1);
+			
+			inicio = periodicidade.incrementa(inicio);
 		}
 		return sessoes;
 	}
