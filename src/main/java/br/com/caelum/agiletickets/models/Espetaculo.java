@@ -109,7 +109,7 @@ public class Espetaculo {
 			sessao.setEspetaculo(this);
 			sessoes.add(sessao);
 			
-			//inicio = periodicidade.incrementa(inicio);
+			inicio = periodicidade.incrementa(inicio);
 		}
 		return sessoes;
 	}
