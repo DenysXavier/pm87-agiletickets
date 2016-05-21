@@ -89,6 +89,15 @@ public class EspetaculoTest {
 	}
 
 	@Test
+	public void deveCriarUmaSessaoComOEspetaculoCorreto() throws Exception {
+		Espetaculo espetaculo = new Espetaculo();
+		espetaculo.setNome("Nome do Espetáculo Teste");
+		List<Sessao> sessoes = espetaculo.criaSessoes(new LocalDate(), new LocalDate(), new LocalTime(), Periodicidade.DIARIA);
+		
+		Assert.assertEquals(espetaculo.getNome(), sessoes.get(0).getEspetaculo().getNome());
+	}
+	
+	@Test
 	public void deveInformarSeEhPossivelReservarAQuantidadeExataDeIngressosDentroDeQualquerDasSessoes() {
 		Espetaculo ivete = new Espetaculo();
 

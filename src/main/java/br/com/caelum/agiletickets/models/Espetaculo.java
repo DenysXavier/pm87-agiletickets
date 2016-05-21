@@ -106,9 +106,10 @@ public class Espetaculo {
 			DateTime horaSessao = inicio.toDateTime(horario);
 			Sessao sessao = new Sessao();
 			sessao.setInicio(horaSessao);
+			sessao.setEspetaculo(this);
 			sessoes.add(sessao);
 			
-			inicio = periodicidade.incrementa(inicio);
+			//inicio = periodicidade.incrementa(inicio);
 		}
 		return sessoes;
 	}
